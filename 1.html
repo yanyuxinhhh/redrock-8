@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function makeClosures(arr, fn) {
+        var result = [];
+        for (var i = 0; i < arr.length; i++) {
+            //匿名函数有一个参数num,因为函数参数是按值传递的，所以传给num的就是当前for循环的值
+            result[i] = function (num) {
+                return function () {
+                    return fn(num)
+                };
+            }(arr[i]);
+        }
+        return result;
+    }
+    makeClosures([1, 2, 3], function (x) { return 2 * x; });
+</script>
+
+</html>

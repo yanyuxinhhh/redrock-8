@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function sayInfo(age) {
+        console.log("name:" + this.name)
+        console.log("age:" + age)
+    }
+    var user = {
+        name: "zzx"
+    }
+    Function.prototype.call2 = function (con) {
+        con.fun = this;//this为要绑定的方法
+        con.fun();
+        delete con.fun;
+    }
+    sayInfo.call2(user, 100)
+
+</script>
+
+</html>
